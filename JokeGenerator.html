@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Jokes | Generate</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script type="text/javascript">
+        let url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single";
+
+        function LoadJokes(){
+        fetch(url)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(item){
+            document.getElementById("jokeContainer").textContent = `${item.joke}`;
+        })
+      }
+      
+       
+    </script>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+      <div class="card bg-dark text-white w-25">
+            <div class="card-header text-center fw-bold">Random Joke Generator</div>
+            <div class="card-body p-2 m-2 text-light" id="jokeContainer">
+                
+            </div>
+            <div class="card-footer">
+                <button onclick="LoadJokes()" class="btn btn-info w-100">Generate</button>
+            </div>
+      </div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
